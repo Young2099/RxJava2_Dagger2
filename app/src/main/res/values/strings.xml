@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MuNews</string>
+    <string name="nav_home">News</string>
+    <string name="nav_offline_manager">知乎</string>
+    <string name="nav_setting">选项</string>
+    <string name="open_drawer">打开</string>
+    <string name="close_drawer">关闭</string>
+</resources>
