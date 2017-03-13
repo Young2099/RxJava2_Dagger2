@@ -3,6 +3,8 @@ package com.yf.munews.app;
 import android.app.Application;
 
 import com.yf.munews.inject.component.AppComponent;
+import com.yf.munews.inject.component.DaggerAppComponent;
+import com.yf.munews.inject.module.AppModule;
 
 /**
  * Created by ${yf} on 2017/3/8.
@@ -11,8 +13,11 @@ import com.yf.munews.inject.component.AppComponent;
 public class App extends Application {
     private static App mInstance;
 
-    public static AppComponent getAppComponent() {
+    public AppComponent getAppComponent() {
         if (mAppComponent == null) {
+            mAppComponent = DaggerAppComponent.builder()
+                    .appModule(new AppModule(this))
+                    .build();
         }
         return mAppComponent;
     }

@@ -7,6 +7,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -42,9 +43,9 @@ public class FlodDrawerLayout extends DrawerLayout {
         setDrawerListener(new DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
-                if(drawerView instanceof FoldLayout){
+                if (drawerView instanceof FoldLayout) {
                     FoldLayout foldLayout = (FoldLayout) drawerView;
-                    Log.e("TAG","slideoffset"+slideOffset);
+                    Log.e("TAG", "slideoffset" + slideOffset);
                     foldLayout.setFactor(slideOffset);
                     foldLayout.setAnchor(1);//DrawerLayout因为其侧滑菜单只能显示侧滑布局右侧的50%，
                     //往右侧拉的时候拉50%才能显示出来
@@ -76,4 +77,14 @@ public class FlodDrawerLayout extends DrawerLayout {
         return (absGravity & (Gravity.LEFT | Gravity.RIGHT)) != 0;
     }
 
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        switch (ev.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                break;
+            case MotionEvent.ACTION_MOVE:
+                break;
+        }
+        return super.onInterceptTouchEvent(ev);
+    }
 }
