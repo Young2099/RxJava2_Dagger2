@@ -13,10 +13,10 @@ import com.yf.munews.inject.module.AppModule;
 public class App extends Application {
     private static App mInstance;
 
-    public AppComponent getAppComponent() {
+    public static AppComponent getAppComponent() {
         if (mAppComponent == null) {
             mAppComponent = DaggerAppComponent.builder()
-                    .appModule(new AppModule(this))
+                    .appModule(new AppModule(mInstance))
                     .build();
         }
         return mAppComponent;

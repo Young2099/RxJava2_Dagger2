@@ -1,9 +1,27 @@
 package com.yf.munews.widget.activity;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+
 import com.yf.munews.R;
+import com.yf.munews.widget.view.FlodDrawerLayout;
+
+import butterknife.BindView;
 
 public class MainActivity extends BaseActivity {
 
+    @BindView(R.id.viewpager)
+    ViewPager mViewPager;
+    @BindView(R.id.tool_bar)
+    Toolbar mToolBar;
+    @BindView(R.id.drawer)
+    FlodDrawerLayout mDrawerLayout;
+    @BindView(R.id.navigation)
+    NavigationView mNavigationView;
 
     @Override
     protected int getLayoutId() {
@@ -12,6 +30,53 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-
+        initDrawerLayout();
     }
+
+    private void initDrawerLayout() {
+        setToolbar(mToolBar,"新垣结衣");
+        mDrawerLayout = (FlodDrawerLayout) findViewById(R.id.drawer);
+        mNavigationView = (NavigationView) findViewById(R.id.navigation);
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolBar, R.string.open_drawer, R.string.close_drawer);
+        drawerToggle.syncState();
+        mDrawerLayout.addDrawerListener(drawerToggle);
+        //对DrawerLayout实现监听
+        //// TODO: 2017/3/10  针对Drawer左侧的点击事件的响应
+        if (mNavigationView != null) {
+            mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.drawer_zhihu:
+
+                            break;
+                        case R.id.drawer_gank:
+
+                            break;
+                        case R.id.drawer_wechat:
+
+                            break;
+                        case R.id.drawer_gold:
+
+                            break;
+                        case R.id.drawer_vtex:
+
+                            break;
+                        case R.id.drawer_setting:
+
+                            break;
+                        case R.id.drawer_like:
+
+                            break;
+                        case R.id.drawer_about:
+
+                            break;
+                    }
+                    return false;
+                }
+            });
+        }
+    }
+
 }

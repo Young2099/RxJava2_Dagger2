@@ -3,26 +3,26 @@
     <item android:title="@string/drawer_group_content">
         <menu>
             <item
+                android:id="@+id/drawer_gold"
+                android:icon="@mipmap/ic_drawer_gold"
+                android:checkable="true"
+                android:title="@string/gold"/>
+            <item
                 android:id="@+id/drawer_zhihu"
                 android:icon="@mipmap/ic_drawer_zhihu"
                 android:checkable="true"
                 android:checked="true"
                 android:title="@string/zhihu"/>
             <item
-                android:id="@+id/drawer_wechat"
-                android:icon="@mipmap/ic_drawer_wechat"
-                android:checkable="true"
-                android:title="@string/wechat"/>
-            <item
                 android:id="@+id/drawer_gank"
                 android:icon="@mipmap/ic_drawer_gank"
                 android:checkable="true"
                 android:title="@string/gank"/>
             <item
-                android:id="@+id/drawer_gold"
-                android:icon="@mipmap/ic_drawer_gold"
+                android:id="@+id/drawer_wechat"
+                android:icon="@mipmap/ic_drawer_wechat"
                 android:checkable="true"
-                android:title="@string/gold"/>
+                android:title="@string/wechat"/>
             <item
                 android:id="@+id/drawer_vtex"
                 android:icon="@mipmap/ic_drawer_vtex"
