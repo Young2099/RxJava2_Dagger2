@@ -19,14 +19,10 @@ public class FragmentModule {
         this.mFragment = fragment;
     }
 
-    /**
-     * 拿到Fragment的对象
-     *
-     * @return
-     */
-    @FragmentScope
     @Provides
+    @FragmentScope
     public Activity providerActivity() {
         return mFragment.getActivity();
     }
+
 }

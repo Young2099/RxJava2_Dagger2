@@ -1,5 +1,7 @@
 package com.yf.munews.widget.fragment.base;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,20 +22,28 @@ import butterknife.ButterKnife;
 
 public abstract class BaseFragment extends Fragment {
 
-    public FragmentComponent mFragmentComponent;
-
+    protected View mFragmentView;
+    protected Activity mActivity;
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mFragmentComponent = DaggerFragmentComponent.builder()
-                .appComponent(App.getAppComponent())//fragment里面也可以拿到其实例
-                .fragmentModule(new FragmentModule(this))
-                .build();
-
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        mActivity = (Activity) context;
     }
 
-    protected View mFragmentView;
+
+    protected FragmentComponent getFragmentComponent() {
+        return DaggerFragmentComponent.builder()
+                .appComponent(App.getAppComponent())
+                .fragmentModule(getFragmentModule())
+                .build();
+    }
+
+
+    protected FragmentModule getFragmentModule(){
+        return new FragmentModule(this);
+    }
+
 
     @Nullable
     @Override

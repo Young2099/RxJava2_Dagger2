@@ -2,6 +2,7 @@ package com.yf.munews.widget.fragment;
 
 import android.view.View;
 
+import com.yf.munews.R;
 import com.yf.munews.widget.fragment.base.BaseFragment;
 
 /**
@@ -11,7 +12,7 @@ import com.yf.munews.widget.fragment.base.BaseFragment;
 public class ZhihuFragment extends BaseFragment {
     @Override
     protected void initInject() {
-        mFragmentComponent.inject(this);
+        getFragmentComponent().inject(this);
     }
 
     @Override
@@ -21,6 +22,6 @@ public class ZhihuFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.fragment_zhihu;
     }
 }

@@ -13,7 +13,7 @@ public class NewsFragment extends BaseFragment {
     //注入实例
     @Override
     protected void initInject() {
-        mFragmentComponent.inject(this);
+        getFragmentComponent().inject(this);
     }
 
     @Override

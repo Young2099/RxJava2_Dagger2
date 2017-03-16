@@ -2,6 +2,7 @@ package com.yf.munews.widget.fragment;
 
 import android.view.View;
 
+import com.yf.munews.R;
 import com.yf.munews.widget.fragment.base.BaseFragment;
 
 /**
@@ -9,9 +10,11 @@ import com.yf.munews.widget.fragment.base.BaseFragment;
  */
 
 public class GankFragment extends BaseFragment {
+
+
     @Override
     protected void initInject() {
-        mFragmentComponent.inject(this);//Dagger2注解，注入Fragment
+        getFragmentComponent().inject(this);//Dagger2注解，注入Fragment
     }
 
     @Override
@@ -21,6 +24,6 @@ public class GankFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return 0;
+        return R.layout.fragment_gank;
     }
 }
