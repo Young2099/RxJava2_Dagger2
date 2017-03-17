@@ -9,7 +9,6 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -119,7 +118,6 @@ public class FoldLayout extends ViewGroup {
             dst[2] = (anchorPoint > (i + 1) * mFlodWidth) ? anchorPoint
                     + (i + 1 - midFold) * mTranslateDisPerFlod : anchorPoint
                     - (midFold - i - 1) * mTranslateDisPerFlod;
-            Log.e("TAG","dst[]"+dst[2]);
             dst[3] = isEven ? depth : 0;
             dst[4] = dst[2];
             dst[5] = isEven ? h - depth : h;
@@ -169,7 +167,6 @@ public class FoldLayout extends ViewGroup {
 
     public void setFactor(float mFactor) {
         this.mFactor = mFactor;
-        Log.e("TAG", "m" + mFactor);
         updateFold();
         invalidate();
     }

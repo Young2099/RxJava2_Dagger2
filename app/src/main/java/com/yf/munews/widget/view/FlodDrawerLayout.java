@@ -7,7 +7,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -34,22 +33,22 @@ public class FlodDrawerLayout extends DrawerLayout {
             View child = getChildAt(i);
             if (isDrawerView(child)) {
                 FoldLayout foldLayout = new FoldLayout(getContext());
+                foldLayout.setAnchor(1);//DrawerLayout因为其侧滑菜单只能显示侧滑布局右侧的50%，
+                //往右侧拉的时候拉50%才能显示出来
+                // 所以要设置搜索的原始坐标点
                 removeView(child);
                 foldLayout.addView(child);
                 ViewGroup.LayoutParams layoutParams = child.getLayoutParams();
                 addView(foldLayout, i, layoutParams);
             }
         }
-        setDrawerListener(new DrawerListener() {
+        addDrawerListener(new DrawerListener() {
             @Override
             public void onDrawerSlide(View drawerView, float slideOffset) {
                 if (drawerView instanceof FoldLayout) {
                     FoldLayout foldLayout = (FoldLayout) drawerView;
                     Log.e("TAG", "slideoffset" + slideOffset);
                     foldLayout.setFactor(slideOffset);
-                    foldLayout.setAnchor(1);//DrawerLayout因为其侧滑菜单只能显示侧滑布局右侧的50%，
-                    //往右侧拉的时候拉50%才能显示出来
-                    // 所以要设置搜索的原始坐标点
                 }
             }
 
@@ -60,7 +59,7 @@ public class FlodDrawerLayout extends DrawerLayout {
 
             @Override
             public void onDrawerClosed(View drawerView) {
-
+                Log.e("TAG","00000000000000");
             }
 
             @Override
@@ -75,16 +74,5 @@ public class FlodDrawerLayout extends DrawerLayout {
         final int absGravity = GravityCompat.getAbsoluteGravity(gravity,
                 ViewCompat.getLayoutDirection(child));
         return (absGravity & (Gravity.LEFT | Gravity.RIGHT)) != 0;
-    }
-
-    @Override
-    public boolean onInterceptTouchEvent(MotionEvent ev) {
-        switch (ev.getAction()){
-            case MotionEvent.ACTION_DOWN:
-                break;
-            case MotionEvent.ACTION_MOVE:
-                break;
-        }
-        return super.onInterceptTouchEvent(ev);
     }
 }
