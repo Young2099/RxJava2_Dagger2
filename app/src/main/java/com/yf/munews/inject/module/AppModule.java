@@ -29,4 +29,8 @@ public class AppModule {
     App providerApplicationContext() {
         return application;
     }
+//
+//    @Provides
+//    @Singleton
+//    RetrofitHelper
 }

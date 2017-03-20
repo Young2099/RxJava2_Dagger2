@@ -4,7 +4,7 @@ import android.app.Activity;
 
 import com.yf.munews.inject.module.ActivityModule;
 import com.yf.munews.inject.scope.ActivityScope;
-import com.yf.munews.widget.activity.MainActivity;
+import com.yf.munews.ui.activity.MainActivity;
 
 import dagger.Component;
 

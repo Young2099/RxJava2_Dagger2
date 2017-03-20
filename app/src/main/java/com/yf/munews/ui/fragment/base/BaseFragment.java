@@ -1,4 +1,4 @@
-package com.yf.munews.widget.fragment.base;
+package com.yf.munews.ui.fragment.base;
 
 import android.app.Activity;
 import android.content.Context;

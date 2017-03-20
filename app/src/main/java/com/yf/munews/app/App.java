@@ -5,6 +5,8 @@ import android.app.Application;
 import com.yf.munews.inject.component.AppComponent;
 import com.yf.munews.inject.component.DaggerAppComponent;
 import com.yf.munews.inject.module.AppModule;
+import com.yf.munews.inject.module.HttpModule;
+import com.yf.munews.inject.module.PageModules;
 
 /**
  * Created by ${yf} on 2017/3/8.
@@ -17,6 +19,8 @@ public class App extends Application {
         if (mAppComponent == null) {
             mAppComponent = DaggerAppComponent.builder()
                     .appModule(new AppModule(mInstance))
+                    .pageModules(new PageModules())
+                    .httpModule(new HttpModule())
                     .build();
         }
         return mAppComponent;
