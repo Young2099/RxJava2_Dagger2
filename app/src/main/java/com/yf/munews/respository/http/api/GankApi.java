@@ -6,4 +6,5 @@ package com.yf.munews.respository.http.api;
  * 使用RxJava方式
  */
 public interface GankApi {
+    String HOST = "";
 }

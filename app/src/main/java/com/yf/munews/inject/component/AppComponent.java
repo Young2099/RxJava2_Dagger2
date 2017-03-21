@@ -5,7 +5,7 @@ import com.yf.munews.inject.module.AppModule;
 import com.yf.munews.inject.module.HttpModule;
 import com.yf.munews.inject.module.PageModules;
 import com.yf.munews.ui.fragment.GankFragment;
-import com.yf.munews.ui.fragment.NewsFragment;
+import com.yf.munews.ui.fragment.news.NewsFragment;
 import com.yf.munews.ui.fragment.ZhihuFragment;
 
 import javax.inject.Singleton;

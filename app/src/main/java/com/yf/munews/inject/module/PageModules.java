@@ -1,7 +1,7 @@
 package com.yf.munews.inject.module;
 
 import com.yf.munews.ui.fragment.GankFragment;
-import com.yf.munews.ui.fragment.NewsFragment;
+import com.yf.munews.ui.fragment.news.NewsFragment;
 import com.yf.munews.ui.fragment.ZhihuFragment;
 
 import javax.inject.Singleton;

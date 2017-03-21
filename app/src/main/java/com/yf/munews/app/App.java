@@ -19,8 +19,8 @@ public class App extends Application {
         if (mAppComponent == null) {
             mAppComponent = DaggerAppComponent.builder()
                     .appModule(new AppModule(mInstance))
-                    .pageModules(new PageModules())
                     .httpModule(new HttpModule())
+                    .pageModules(new PageModules())
                     .build();
         }
         return mAppComponent;

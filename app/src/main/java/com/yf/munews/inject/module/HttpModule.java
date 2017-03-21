@@ -1,8 +1,10 @@
 package com.yf.munews.inject.module;
 
 import com.yf.munews.BuildConfig;
+import com.yf.munews.inject.qualifier.GankUrl;
 import com.yf.munews.inject.qualifier.NewsUrl;
 import com.yf.munews.inject.qualifier.ZhihuUrl;
+import com.yf.munews.respository.http.api.GankApi;
 import com.yf.munews.respository.http.api.NewsApi;
 import com.yf.munews.respository.http.api.ZhihuApi;
 import com.yf.munews.utils.FileUtils;
@@ -49,15 +51,22 @@ public class HttpModule {
     @Singleton
     @Provides
     @ZhihuUrl
-    Retrofit providerZhihuApi(Retrofit.Builder builder, OkHttpClient client) {
+    Retrofit providerZhihu(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, ZhihuApi.HOST);
     }
 
     @Singleton
     @Provides
     @NewsUrl
-    Retrofit providerNewsApi(Retrofit.Builder builder, OkHttpClient client) {
+    Retrofit providerNews(Retrofit.Builder builder, OkHttpClient client) {
         return createRetrofit(builder, client, NewsApi.HOST);
+    }
+
+    @Singleton
+    @Provides
+    @GankUrl
+    Retrofit providerGank(Retrofit.Builder builder, OkHttpClient client) {
+        return createRetrofit(builder, client, GankApi.HOST);
     }
 
     /**
@@ -135,6 +144,12 @@ public class HttpModule {
     @Provides
     NewsApi providerNewsApi(@NewsUrl Retrofit retrofit) {
         return retrofit.create(NewsApi.class);
+    }
+
+    @Singleton
+    @Provides
+    GankApi providerGankApi(@GankUrl Retrofit retrofit) {
+        return retrofit.create(GankApi.class);
     }
 
 

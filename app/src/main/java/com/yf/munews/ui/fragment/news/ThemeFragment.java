@@ -1,4 +1,4 @@
-package com.yf.munews.ui.fragment;
+package com.yf.munews.ui.fragment.news;
 
 import android.view.View;
 
@@ -6,14 +6,13 @@ import com.yf.munews.R;
 import com.yf.munews.ui.fragment.base.BaseFragment;
 
 /**
- * Created by ${yf} on 2017/3/14.
+ * Created by ${yf} on 2017/3/21.
  */
 
-public class NewsFragment extends BaseFragment {
-    //注入实例
+public class ThemeFragment extends BaseFragment {
     @Override
     protected void initInject() {
-        getFragmentComponent().inject(this);
+
     }
 
     @Override
@@ -23,6 +22,6 @@ public class NewsFragment extends BaseFragment {
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_news;
+        return R.layout.fragment_zhihu;
     }
 }

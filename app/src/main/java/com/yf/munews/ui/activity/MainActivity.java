@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import com.yf.munews.R;
 import com.yf.munews.utils.Constants;
 import com.yf.munews.ui.fragment.GankFragment;
-import com.yf.munews.ui.fragment.NewsFragment;
+import com.yf.munews.ui.fragment.news.NewsFragment;
 import com.yf.munews.ui.fragment.ZhihuFragment;
 import com.yf.munews.ui.view.FlodDrawerLayout;
 
