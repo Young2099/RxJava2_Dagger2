@@ -20,15 +20,13 @@ import butterknife.BindView;
 
 public class NewsFragment extends BaseFragment {
 
-    String[] tabTitle = new String[]{"日报", "主题", "专栏", "热门"};
-    List<Fragment> fragments = new ArrayList<Fragment>();
+    String[] tabTitle = new String[]{"头条", "科技", "财经", "军事"};
+    List<Fragment> mFragments = new ArrayList<>();
 
     @BindView(R.id.viewpager)
     ViewPager mViewPager;
     @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
-
-    NewsPagerAdapter newsPagerAdapter;
 
     //注入实例
     @Override
@@ -38,16 +36,26 @@ public class NewsFragment extends BaseFragment {
 
     @Override
     protected void initViews(View view) {
-        fragments.add(new DailyFragment());
-        fragments.add(new ThemeFragment());
-        newsPagerAdapter = new NewsPagerAdapter(getChildFragmentManager(), fragments);
-        mViewPager.setAdapter(newsPagerAdapter);
-        mTabLayout.addTab(mTabLayout.newTab().setText(tabTitle[0]));
-        mTabLayout.addTab(mTabLayout.newTab().setText(tabTitle[1]));
-        mTabLayout.setupWithViewPager(mViewPager);
-        mTabLayout.getTabAt(0).setText(tabTitle[0]);
-        mTabLayout.getTabAt(1).setText(tabTitle[1]);
+        initFragments();
     }
+
+    private void initFragments() {
+        mFragments.clear();
+        List<String> channelName = new ArrayList<>();
+        if (tabTitle != null) {
+            for (String title : tabTitle) {
+                NewsListFragment fragment = new NewsListFragment();
+                mFragments.add(fragment);
+                channelName.add(title);
+            }
+        }
+        NewsPagerAdapter adapter = new NewsPagerAdapter(getChildFragmentManager(), mFragments, channelName);
+        mViewPager.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        mViewPager.setCurrentItem(0);
+        mTabLayout.setupWithViewPager(mViewPager);
+    }
+
 
     @Override
     protected int getLayoutId() {

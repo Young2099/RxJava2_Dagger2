@@ -1,4 +1,4 @@
-package com.yf.munews.ui.activity;
+package com.yf.munews.ui.activity.base;
 
 import android.app.Activity;
 import android.os.Build;

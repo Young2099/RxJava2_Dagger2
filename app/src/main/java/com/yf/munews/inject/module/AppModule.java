@@ -1,6 +1,10 @@
 package com.yf.munews.inject.module;
 
+import android.util.Log;
+
 import com.yf.munews.app.App;
+import com.yf.munews.respository.db.RetrofitHelper;
+import com.yf.munews.respository.http.api.NewsApi;
 
 import javax.inject.Singleton;
 
@@ -17,6 +21,7 @@ public class AppModule {
 
     public AppModule(App application) {
         this.application = application;
+        Log.e("tag","111111");
     }
 
     /**
@@ -29,8 +34,11 @@ public class AppModule {
     App providerApplicationContext() {
         return application;
     }
-//
-//    @Provides
-//    @Singleton
-//    RetrofitHelper
+
+
+    @Provides
+    @Singleton
+    RetrofitHelper providerRetrofitHelper(NewsApi newsApi){
+        return  new RetrofitHelper(newsApi);
+    }
 }

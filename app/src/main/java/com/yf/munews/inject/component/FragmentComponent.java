@@ -5,8 +5,8 @@ import android.app.Activity;
 import com.yf.munews.inject.module.FragmentModule;
 import com.yf.munews.inject.scope.FragmentScope;
 import com.yf.munews.ui.fragment.GankFragment;
-import com.yf.munews.ui.fragment.news.NewsFragment;
 import com.yf.munews.ui.fragment.ZhihuFragment;
+import com.yf.munews.ui.fragment.news.NewsFragment;
 
 import dagger.Component;
 

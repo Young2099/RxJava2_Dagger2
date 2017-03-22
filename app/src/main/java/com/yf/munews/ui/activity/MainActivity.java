@@ -10,11 +10,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import com.yf.munews.R;
-import com.yf.munews.utils.Constants;
+import com.yf.munews.ui.activity.base.BaseActivity;
 import com.yf.munews.ui.fragment.GankFragment;
-import com.yf.munews.ui.fragment.news.NewsFragment;
 import com.yf.munews.ui.fragment.ZhihuFragment;
+import com.yf.munews.ui.fragment.news.NewsFragment;
 import com.yf.munews.ui.view.FlodDrawerLayout;
+import com.yf.munews.utils.Constants;
 
 import javax.inject.Inject;
 

@@ -15,4 +15,5 @@
     <string name="drawer_collection">收藏</string>
     <string name="drawer_setting">设置</string>
     <string name="drawer_about">关于</string>
+    <string name="retry_refresh_news">重新加载</string>
 </resources>

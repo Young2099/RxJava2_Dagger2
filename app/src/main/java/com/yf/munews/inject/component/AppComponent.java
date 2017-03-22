@@ -4,9 +4,10 @@ import com.yf.munews.app.App;
 import com.yf.munews.inject.module.AppModule;
 import com.yf.munews.inject.module.HttpModule;
 import com.yf.munews.inject.module.PageModules;
+import com.yf.munews.respository.db.RetrofitHelper;
 import com.yf.munews.ui.fragment.GankFragment;
-import com.yf.munews.ui.fragment.news.NewsFragment;
 import com.yf.munews.ui.fragment.ZhihuFragment;
+import com.yf.munews.ui.fragment.news.NewsFragment;
 
 import javax.inject.Singleton;
 
@@ -25,5 +26,7 @@ public interface AppComponent {
     GankFragment getGankFragment();
 
     ZhihuFragment getZhihuFragment();
+
+    RetrofitHelper retrofitHelper();  //提供http的帮助类
 
 }

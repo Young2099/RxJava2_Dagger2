@@ -7,6 +7,7 @@ import com.yf.munews.inject.component.DaggerAppComponent;
 import com.yf.munews.inject.module.AppModule;
 import com.yf.munews.inject.module.HttpModule;
 import com.yf.munews.inject.module.PageModules;
+import com.yf.munews.respository.http.api.NewsApi;
 
 /**
  * Created by ${yf} on 2017/3/8.
@@ -14,6 +15,7 @@ import com.yf.munews.inject.module.PageModules;
 
 public class App extends Application {
     private static App mInstance;
+    private NewsApi newsApi;
 
     public static AppComponent getAppComponent() {
         if (mAppComponent == null) {
