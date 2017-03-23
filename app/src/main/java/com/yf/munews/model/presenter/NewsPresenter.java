@@ -6,5 +6,5 @@ package com.yf.munews.model.presenter;
 
 public interface NewsPresenter extends BasePresenter {
 
-    void getNewsData();
+    void onItemClicked(String channelType, String channelId);
 }
