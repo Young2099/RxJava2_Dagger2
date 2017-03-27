@@ -10,6 +10,11 @@ import java.io.File;
 
 public class FileUtils {
 
+    /**
+     * OkHttp
+     * 缓存路径
+     * @return
+     */
     public static String getCacheFile() {
         String cache = App.getInstance().getCacheDir().getAbsolutePath() + File.separator + "data";
         return cache;

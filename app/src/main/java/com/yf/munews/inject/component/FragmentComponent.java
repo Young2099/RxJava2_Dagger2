@@ -7,6 +7,7 @@ import com.yf.munews.inject.scope.FragmentScope;
 import com.yf.munews.ui.fragment.GankFragment;
 import com.yf.munews.ui.fragment.ZhihuFragment;
 import com.yf.munews.ui.fragment.news.NewsFragment;
+import com.yf.munews.ui.fragment.news.NewsListFragment;
 
 import dagger.Component;
 
@@ -24,5 +25,8 @@ public interface FragmentComponent {
     void inject(ZhihuFragment zhihuFragment);
 
     void inject(NewsFragment newsFragment);
+
+    void inject(NewsListFragment newsListFragment);
+
 
 }

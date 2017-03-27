@@ -51,9 +51,9 @@ public abstract class BaseFragment extends Fragment {
         if (mFragmentView == null) {
             mFragmentView = inflater.inflate(getLayoutId(),null);
             ButterKnife.bind(this, mFragmentView);
-            initViews(mFragmentView);
         }
         initInject();
+        initViews(mFragmentView);
         return mFragmentView;
     }
 
