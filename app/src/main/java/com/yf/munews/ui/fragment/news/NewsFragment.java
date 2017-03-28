@@ -1,15 +1,17 @@
 package com.yf.munews.ui.fragment.news;
 
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.yf.munews.R;
-import com.yf.munews.model.presenter.impl.NewsPresenterImpl;
+import com.yf.munews.model.presenter.impl.news.NewsPresenterImpl;
 import com.yf.munews.model.view.news.NewsView;
 import com.yf.munews.ui.adapter.NewsPagerAdapter;
 import com.yf.munews.ui.fragment.base.BaseFragment;
+import com.yf.munews.utils.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +25,9 @@ import greendao.NewsChannelTable;
  * Created by ${yf} on 2017/3/14.
  */
 
-public class NewsFragment extends BaseFragment implements NewsView{
+public class NewsFragment extends BaseFragment implements NewsView {
 
-    String[] tabTitle = new String[]{"头条", "科技", "财经", "军事"};
+    private List<String> mChannelNames;
     List<Fragment> mFragments = new ArrayList<>();
 
     @BindView(R.id.viewpager)
@@ -46,28 +48,6 @@ public class NewsFragment extends BaseFragment implements NewsView{
     protected void initViews(View view) {
         newsPresenter.attachView(this);
         newsPresenter.onCreate();
-        initFragments();
-    }
-
-    private void initFragments() {
-        mFragments.clear();
-        List<String> channelName = new ArrayList<>();
-        if (tabTitle != null) {
-            for (String title : tabTitle) {
-                NewsListFragment fragment = new NewsListFragment();
-//                Bundle bundle = new Bundle();
-//                bundle.putString(Constants.NEWS_ID, channelTable.getNewsChannelId());
-//                bundle.putString(Constants.NEWS_TYPE, channelTable.getNewsChannelType());
-//                bundle.putInt(Constants.CHANNEL_POSITION, channelTable.getNewsChannelIndex());
-                mFragments.add(fragment);
-                channelName.add(title);
-            }
-        }
-        NewsPagerAdapter adapter = new NewsPagerAdapter(getChildFragmentManager(), mFragments, channelName);
-        mViewPager.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-        mViewPager.setCurrentItem(0);
-        mTabLayout.setupWithViewPager(mViewPager);
     }
 
 
@@ -82,7 +62,43 @@ public class NewsFragment extends BaseFragment implements NewsView{
     }
 
     @Override
-    public void initChannelTable(List<NewsChannelTable> list) {
+    public void hideProgress() {
 
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void initChannelTable(List<NewsChannelTable> list) {
+        mFragments.clear();
+        List<String> channelName = new ArrayList<>();
+        if (list != null) {
+            for (NewsChannelTable channelTable : list) {
+                NewsListFragment fragment = new NewsListFragment();
+                Bundle bundle = new Bundle();
+                bundle.putString(Constants.NEWS_ID, channelTable.getNewsChannelId());
+                bundle.putString(Constants.NEWS_TYPE, channelTable.getNewsChannelType());
+                bundle.putInt(Constants.CHANNEL_POSITION, channelTable.getNewsChannelIndex());
+                fragment.setArguments(bundle);
+                mFragments.add(fragment);
+                channelName.add(channelTable.getNewsChannelName());
+            }
+        }
+        NewsPagerAdapter adapter = new NewsPagerAdapter(getChildFragmentManager(), mFragments, channelName);
+        mViewPager.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        mViewPager.setCurrentItem(0);
+        mTabLayout.setupWithViewPager(mViewPager);
+        mChannelNames = channelName;
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        newsPresenter.onDestroy();
     }
 }

@@ -7,4 +7,8 @@ package com.yf.munews.model.view;
 public interface BaseView {
     void showErrorMsg(String errorMessage);
 
+    /* 隐藏加载的Progress*/
+    void hideProgress();
+
+    void showProgress();
 }

@@ -1,27 +1,20 @@
-package com.yf.munews.model.presenter.impl;
-
-import android.support.annotation.NonNull;
+package com.yf.munews.model.presenter.impl.news;
 
 import com.yf.munews.model.bean.NewsSummary;
-import com.yf.munews.model.callback.RequestCallBack;
 import com.yf.munews.model.controller.impl.NewsListControllerImpl;
+import com.yf.munews.model.presenter.impl.BasePresenterImpl;
 import com.yf.munews.model.presenter.news.NewsListPresenter;
-import com.yf.munews.model.view.BaseView;
 import com.yf.munews.model.view.news.NewsListView;
 
 import java.util.List;
 
 import javax.inject.Inject;
 
-import io.reactivex.disposables.Disposable;
-
 /**
  * Created by ${yf} on 2017/3/22.
  */
 
-public class NewsListPresenterImpl implements NewsListPresenter, RequestCallBack<List<NewsSummary>> {
-    private NewsListView mView;
-    private Disposable disposable;
+public class NewsListPresenterImpl extends BasePresenterImpl<NewsListView, List<NewsSummary>> implements NewsListPresenter {
     private String channelType;
     private String channelId;
     private int startPage = 20;
@@ -43,35 +36,25 @@ public class NewsListPresenterImpl implements NewsListPresenter, RequestCallBack
      * 获取数据方法
      */
     private void loadNewsData() {
-       disposable = newsController.getNewsData(channelType, channelId, startPage, this);
-    }
-
-    @Override
-    public void attachView(@NonNull BaseView view) {
-        mView = (NewsListView) view;
-    }
-
-    @Override
-    public void onDestroy() {
-        if(!disposable.isDisposed() && disposable != null){
-            disposable.dispose();
-        }
+        mDisposable = newsController.getNewsData(channelType, channelId, startPage, this);
     }
 
 
     @Override
-    public void onFailure(String localizedMessage) {
-
-    }
-
-    @Override
-    public void onSuccess(List<NewsSummary> newsSummaries) {
-
+    public void onSuccess(List<NewsSummary> t) {
+        super.onSuccess(t);
+        mView.setItems(t);
     }
 
     @Override
     public void onItemClicked(String channelType, String channelId) {
         this.channelType = channelType;
         this.channelId = channelId;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mView = null;
     }
 }

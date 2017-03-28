@@ -6,5 +6,8 @@ package com.yf.munews.model.callback;
 
 public interface RequestCallBack<T> {
     void onFailure(String errorMessage);
+
     void onSuccess(T t);
+
+    void loadBefore();
 }

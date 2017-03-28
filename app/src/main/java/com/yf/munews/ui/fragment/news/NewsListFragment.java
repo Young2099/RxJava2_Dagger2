@@ -8,7 +8,7 @@ import android.view.View;
 
 import com.yf.munews.R;
 import com.yf.munews.model.bean.NewsSummary;
-import com.yf.munews.model.presenter.impl.NewsListPresenterImpl;
+import com.yf.munews.model.presenter.impl.news.NewsListPresenterImpl;
 import com.yf.munews.model.view.news.NewsListView;
 import com.yf.munews.ui.fragment.base.BaseFragment;
 import com.yf.munews.utils.Constants;
@@ -69,6 +69,16 @@ public class NewsListFragment extends BaseFragment implements NewsListView {
 
     }
 
+    @Override
+    public void hideProgress() {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
     /**
      * 访问服务返回的数据
      *
@@ -78,7 +88,6 @@ public class NewsListFragment extends BaseFragment implements NewsListView {
     public void setItems(List<NewsSummary> data) {
 
     }
-
 
     @Override
     public void onDestroy() {
