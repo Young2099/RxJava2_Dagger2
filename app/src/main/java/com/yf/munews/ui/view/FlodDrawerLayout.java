@@ -81,4 +81,21 @@ public class FlodDrawerLayout extends DrawerLayout {
         return (absGravity & (Gravity.LEFT | Gravity.RIGHT)) != 0;
     }
 
+    @Override
+    public void closeDrawer(View drawerView) {
+        super.closeDrawer(getRealDrawer(drawerView));
+    }
+
+    private View getRealDrawer(View drawerView) {
+        View drawerView2 = (View) drawerView.getParent();
+        if (isFoldingLayout(drawerView2)) {
+            return drawerView2;
+        } else {
+            return drawerView;
+        }
+    }
+
+    private boolean isFoldingLayout(View drawerView) {
+        return drawerView instanceof FoldLayout;
+    }
 }

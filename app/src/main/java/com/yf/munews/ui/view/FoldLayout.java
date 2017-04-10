@@ -9,6 +9,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -72,10 +73,11 @@ public class FoldLayout extends ViewGroup {
 
         View child = getChildAt(0);
         child.layout(0, 0, child.getMeasuredWidth(), child.getMeasuredHeight());
-
         mBitmap = Bitmap.createBitmap(getMeasuredWidth(), getMeasuredHeight(),
                 Bitmap.Config.ARGB_8888);
         mCanvas.setBitmap(mBitmap);
+        getChildAt(0).draw(mCanvas);
+        Log.e("TAG","、、、、、、、、、、"+getChildAt(0));
         updateFold();
     }
 

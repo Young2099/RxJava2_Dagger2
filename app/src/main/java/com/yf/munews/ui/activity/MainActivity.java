@@ -112,7 +112,7 @@ public class MainActivity extends BaseActivity {
 
                             break;
                     }
-                    mDrawerLayout.closeDrawers();
+                    mDrawerLayout.closeDrawer(mNavigationView);
                     changeFragment(getShowFragment(showFragment), getShowFragment(hideFragment));
                     hideFragment = showFragment;
                     return true;
