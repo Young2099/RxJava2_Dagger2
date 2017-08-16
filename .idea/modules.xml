@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MuNews.iml" filepath="$PROJECT_DIR$/MuNews.iml" />
+      <module fileurl="file://$PROJECT_DIR$/RxJava2_Dagger2.iml" filepath="$PROJECT_DIR$/RxJava2_Dagger2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/foldingLayout/foldingLayout.iml" filepath="$PROJECT_DIR$/foldingLayout/foldingLayout.iml" />
     </modules>

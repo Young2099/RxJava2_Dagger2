@@ -38,7 +38,6 @@ dependencies {
     compile 'com.google.dagger:dagger:2.5'
     provided 'com.google.dagger:dagger-compiler:2.5'
     provided 'org.glassfish:javax.annotation:10.0-b28'
-    compile project(path: ':foldingLayout')
     /*network */
     compile 'com.squareup.retrofit2:retrofit:2.2.0'
     compile 'com.squareup.retrofit2:converter-gson:2.2.0'
